@@ -83,11 +83,11 @@ if (calificacion < 3.0) {
 }
 
 */
-/** 
 
+/** 
 let generacion;
 
-generacion = parseInt(prompt("Ingrese año de nacimiento"))
+generacion = parseInt(prompt("Ingrese año de nacimiento entre 1883 y 2025"))
 
 if (generacion >1883 && generacion <1900) {
     console.log("Generacion perdida")
@@ -110,7 +110,9 @@ else {
     console.log ("Ingrese año de nacimiento entre 1883 y 2025")
 }
 
-*/
+
+
+/** 
 
 const Aleatorio = Math.floor(Math.random() * 50) + 1;
 let Intentos = 0;
@@ -141,4 +143,99 @@ while (!Estado) {
             break;
     }
 }
+
+*/
+
+/** 
+// Solicitar al usuario el número de estudiantes
+let numeroEstudiantes = parseInt(prompt("Ingrese el número de estudiantes:"));
+
+// Crear un vector (array) vacío para almacenar las calificaciones
+let calificaciones = [];
+
+// Permitir al usuario ingresar las calificaciones de cada estudiante
+for (let i = 0; i < numeroEstudiantes; i++) {
+    let calificacion = parseFloat(prompt(`Ingrese la calificación del estudiante ${i + 1}:`));
+    
+    // Validar que la calificación esté entre 0 y 10, por ejemplo
+    while (isNaN(calificacion) || calificacion < 0 || calificacion > 10) {
+        calificacion = parseFloat(prompt(`Calificación inválida. Ingrese un valor entre 0 y 10 para el estudiante ${i + 1}:`));
+    }
+
+    // Agregar la calificación al array
+    calificaciones.push(calificacion);
+}
+
+// Mostrar las calificaciones ingresadas
+console.log("Calificaciones de los estudiantes:");
+for (let i = 0; i < calificaciones.length; i++) {
+    console.log(`Estudiante ${i + 1}: ${calificaciones[i]}`);
+}
+
+*/
+
+/** 
+
+let tamanio = parseInt(prompt("Ingrese la cantidad de estudiantes"));
+let calificaciones = new Array(tamanio);
+let sumaCalificaciones = 0;  // Variable para acumular la suma de las calificaciones
+
+for (let i = 0; i < calificaciones.length; i++) {
+    calificaciones[i] = parseFloat(prompt("Ingrese las notas"));
+
+    // Acumular la suma de las calificaciones
+    sumaCalificaciones += calificaciones[i];
+}
+
+for (let i = 0; i < calificaciones.length; i++) {
+    console.log(`Calificación ${i + 1} :  ${calificaciones[i]}`);
+}
+
+// Calcular y mostrar el promedio
+let promedio = sumaCalificaciones / tamanio;
+console.log(`El promedio de las calificaciones es: ${promedio.toFixed(2)}`);
+*/
+
+
+function imprimaProducto(prod, prec, cant, tot_art) {
+    console.log(`Producto: ${prod}, Cantidad: ${cant}, Precio: ${prec}, Total de artículos: ${tot_art}`);
+}
+
+function caja() {
+    let total = 0;
+    let productos = [];
+
+    while (true) {
+        let producto = prompt("Ingrese el nombre del producto");
+        let precio = parseFloat(prompt("Ingrese el precio del producto"));
+        let cantidad = parseInt(prompt("Ingrese la cantidad del producto"));
+
+        if (!isNaN(precio) && precio >= 0 && !isNaN(cantidad) && cantidad > 0) {
+            let subtotal = precio * cantidad;
+            total += subtotal;
+            productos.push({ nombre: producto, precio: precio, cantidad: cantidad });
+            imprimaProducto(producto, precio, cantidad, productos.length);
+        } else {
+            console.log("Precio o cantidad inválidos, intente de nuevo");
+        }
+
+        let continuar = prompt("¿Desea seguir agregando más artículos? (si/no)").toLowerCase();
+        if (continuar !== 'si') {
+            break;
+        }
+    }
+
+    console.log("Productos facturados:");
+    productos.forEach(prod => {
+        console.log(`Producto: ${prod.nombre}, Precio: $${prod.precio}, Cantidad: ${prod.cantidad}`);
+    });
+
+    console.log(`Total de la compra: $${total}`);
+}
+
+caja();
+
+
+
+
 
